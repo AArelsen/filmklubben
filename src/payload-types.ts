@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     articles: Article;
+    'film-reviews': FilmReview;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    'film-reviews': FilmReviewsSelect<false> | FilmReviewsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -198,6 +200,42 @@ export interface Article {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "film-reviews".
+ */
+export interface FilmReview {
+  id: number;
+  title: string;
+  movieTitle: string;
+  director: string;
+  duration: number;
+  ageLimit: number;
+  cast: string;
+  rating: number;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  author: number | User;
+  publishedAt: string;
+  slug: string;
+  image: number | Media;
+  excerpt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -231,6 +269,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'articles';
         value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'film-reviews';
+        value: number | FilmReview;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -329,6 +371,27 @@ export interface ArticlesSelect<T extends boolean = true> {
   autor?: T;
   publishedAt?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "film-reviews_select".
+ */
+export interface FilmReviewsSelect<T extends boolean = true> {
+  title?: T;
+  movieTitle?: T;
+  director?: T;
+  duration?: T;
+  ageLimit?: T;
+  cast?: T;
+  rating?: T;
+  content?: T;
+  author?: T;
+  publishedAt?: T;
+  slug?: T;
+  image?: T;
+  excerpt?: T;
   updatedAt?: T;
   createdAt?: T;
 }
