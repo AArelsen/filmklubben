@@ -72,6 +72,7 @@ export interface Config {
     articles: Article;
     'film-reviews': FilmReview;
     'film-events': FilmEvent;
+    registrations: Registration;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     'film-reviews': FilmReviewsSelect<false> | FilmReviewsSelect<true>;
     'film-events': FilmEventsSelect<false> | FilmEventsSelect<true>;
+    registrations: RegistrationsSelect<false> | RegistrationsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -252,6 +254,19 @@ export interface FilmEvent {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registrations".
+ */
+export interface Registration {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  event: number | FilmEvent;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -293,6 +308,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'film-events';
         value: number | FilmEvent;
+      } | null)
+    | ({
+        relationTo: 'registrations';
+        value: number | Registration;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -425,6 +444,18 @@ export interface FilmEventsSelect<T extends boolean = true> {
   eventDate?: T;
   slug?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registrations_select".
+ */
+export interface RegistrationsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  age?: T;
+  event?: T;
   updatedAt?: T;
   createdAt?: T;
 }
