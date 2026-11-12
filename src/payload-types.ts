@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     articles: Article;
     'film-reviews': FilmReview;
+    'film-events': FilmEvent;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     'film-reviews': FilmReviewsSelect<false> | FilmReviewsSelect<true>;
+    'film-events': FilmEventsSelect<false> | FilmEventsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -236,6 +238,20 @@ export interface FilmReview {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "film-events".
+ */
+export interface FilmEvent {
+  id: number;
+  title: string;
+  descriprion: string;
+  eventDate: string;
+  slug: string;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -273,6 +289,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'film-reviews';
         value: number | FilmReview;
+      } | null)
+    | ({
+        relationTo: 'film-events';
+        value: number | FilmEvent;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -392,6 +412,19 @@ export interface FilmReviewsSelect<T extends boolean = true> {
   slug?: T;
   image?: T;
   excerpt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "film-events_select".
+ */
+export interface FilmEventsSelect<T extends boolean = true> {
+  title?: T;
+  descriprion?: T;
+  eventDate?: T;
+  slug?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
