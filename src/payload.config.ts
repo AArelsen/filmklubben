@@ -11,6 +11,7 @@ import { Articles } from './collections/Articles'
 import { FilmReviews } from './collections/FilmReviews'
 import { FilmEvents } from "./collections/FilmEvents"
 import { Registrations } from "./collections/Registrations"
+import { Homepage } from "./globals/Homepage"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -23,6 +24,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Articles, FilmReviews, FilmEvents, Registrations],
+  globals: [Homepage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

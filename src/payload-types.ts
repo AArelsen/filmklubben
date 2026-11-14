@@ -95,8 +95,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    homepage: Homepage;
+  };
+  globalsSelect: {
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -498,6 +502,71 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage".
+ */
+export interface Homepage {
+  id: number;
+  layout?:
+    | (
+        | {
+            event: number | FilmEvent;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'filmEventBanner';
+          }
+        | {
+            articles: (number | Article)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'articleSelection';
+          }
+        | {
+            reviews: (number | FilmReview)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviewSelection';
+          }
+      )[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage_select".
+ */
+export interface HomepageSelect<T extends boolean = true> {
+  layout?:
+    | T
+    | {
+        filmEventBanner?:
+          | T
+          | {
+              event?: T;
+              id?: T;
+              blockName?: T;
+            };
+        articleSelection?:
+          | T
+          | {
+              articles?: T;
+              id?: T;
+              blockName?: T;
+            };
+        reviewSelection?:
+          | T
+          | {
+              reviews?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
