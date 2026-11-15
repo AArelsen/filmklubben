@@ -162,3 +162,26 @@ svg {
     }
   }
 }
+
+.site-header{
+  padding: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #000;
+}
+
+.site-header p {
+  margin: 8px 0 16px;
+}
+
+.site-nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.site-header a:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
