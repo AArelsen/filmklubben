@@ -243,3 +243,10 @@ svg {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.author-photo{
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+}
