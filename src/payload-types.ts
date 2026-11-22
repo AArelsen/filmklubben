@@ -249,7 +249,7 @@ export interface FilmReview {
 export interface FilmEvent {
   id: number;
   title: string;
-  descriprion: string;
+  description: string;
   eventDate: string;
   slug: string;
   image: number | Media;
@@ -444,7 +444,7 @@ export interface FilmReviewsSelect<T extends boolean = true> {
  */
 export interface FilmEventsSelect<T extends boolean = true> {
   title?: T;
-  descriprion?: T;
+  description?: T;
   eventDate?: T;
   slug?: T;
   image?: T;
