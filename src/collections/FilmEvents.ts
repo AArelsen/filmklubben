@@ -13,10 +13,10 @@ export const FilmEvents: CollectionConfig = {
             label: "Tittel",
         },
         {
-            name: "descriprion",
-            type: "text",
+            name: "description",
+            type: "textarea",
             required: true,
-            label: "Beskrivelse",
+            label: "Beskrivelse (nytt felt)",
         },
         {
             name: "eventDate",
