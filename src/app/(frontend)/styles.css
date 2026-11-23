@@ -250,3 +250,21 @@ svg {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.movie-facts{
+  border: 1px solid #666;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.movie-facts h2{
+  margin-top: 0;
+}
+
+.movie-facts dt{
+  font-weight: 700;
+}
+
+.movie-facts dd{
+  margin: 0 0 16px;
+}
