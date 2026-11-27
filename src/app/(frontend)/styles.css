@@ -181,8 +181,12 @@ svg {
   gap: 16px;
 }
 
-.site-header a:focus-visible{
-  outline: 2px solid currentColor;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+  outline: 2px solid #ffcc66;
   outline-offset: 4px;
 }
 
