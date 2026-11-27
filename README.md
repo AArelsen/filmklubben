@@ -51,6 +51,32 @@ Innholdet administreres i Payload CMS.
 SQLite bruker en lokal databasefil. Du trenger ikke en separat
 databaseserver.
 
+## Eksempelinnhold
+
+Etter at `.env` er konfigurert, kan du opprette eksempelinnhold:
+
+1. Sett `DEMO_PASSWORD` i `.env` til et eget testpassord med minst
+   12 tegn. Erstatt eksempelverdien.
+2. Kjør kommandoen fra prosjektmappen:
+
+   ```bash
+   npm run seed:demo
+   ```
+
+Kommandoen oppretter et eksempelbilde, to brukere, en artikkel,
+en filmanmeldelse og en filmkveld.
+
+Demobrukere:
+
+- `anna@example.com`
+- `erik@example.com`
+
+Begge nye demobrukere får passordet du satte i `DEMO_PASSWORD`.
+Eksisterende brukeres passord endres ikke.
+
+Forsiden fylles med eksempelblokker bare hvis den ikke har blokker fra før.
+Kommandoen kan kjøres flere ganger uten å opprette de samme
+demopostene på nytt.
 
 ## Opprette innhold i admin
 
