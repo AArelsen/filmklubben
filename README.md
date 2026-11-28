@@ -129,3 +129,19 @@ npm run generate:types
 ```
 
 `src/payload-types.ts` genereres automatisk og skal ikke redigeres manuelt.
+
+
+## Avhengigheter og sikkerhet
+
+Next.js, Sharp og Vitest er oppdatert etter kontroll med `npm audit`.
+
+Prosjektet bruker en npm-override for `happy-dom` til versjon 21.0.4
+for å rette rapporterte sikkerhetssårbarheter. Dette ligger utenfor
+Lexicals oppgitte versjonsintervall. Rich text-redigering, lagring,
+visning og produksjonsbygging er derfor kontrollert etter endringen.
+
+Ved siste kontroll gjensto fem moderate audit-funn i avhengighetskjeden
+fra `@payloadcms/db-sqlite` via `drizzle-kit` til `esbuild`.
+npm rapporterte ingen tilgjengelig automatisk rettelse for denne kjeden.
+
+Audit-status kan endres. Kjør `npm audit` for en oppdatert rapport.
